@@ -6,23 +6,25 @@ interface IFC_BarProps {
     val: number;
     index: number;
     width: number;
-    spacing: number
+    spacing: number;
+    showNumber: Boolean;
 }
 
-export default function Bar(props: IFC_BarProps) {
+export default function Bar({ val, width, spacing, index, showNumber }: IFC_BarProps) {
 
     const barStyles = {
-        height: 4 * props.val,
-        width: props.width,
-        // transform: `translateX(${10 * props.index + 1})`
-        left: props.spacing * props.index
+        height: 4 * val,
+        width: width,
+        left: width * index + spacing * index
     }
 
-    console.log("Width: ", props.width);
+    // console.log("Width: ", width);
 
     return (
         <div className="bar" style={barStyles}>
-            {props.val}
+            {
+                showNumber ? <span>{val}</span> : null
+            }
         </div>
     )
 }

@@ -5,7 +5,7 @@ export interface IFC_ProviderProps {
     children?: any
 }
 
-type ArrayContextData = number[]
+export type ArrayContextData = number[]
 type ArrayContextValue = {
     array: ArrayContextData;
     setArray: Dispatch<SetStateAction<ArrayContextData>>;

@@ -3,10 +3,14 @@ import { resetArray } from '../../utils/helpers'
 
 import './MenuBar.min.css'
 
-export default function MenuBar() {
+interface MenuBarProps {
+    sortHandler: any
+}
+
+export default function MenuBar({ sortHandler }: MenuBarProps) {
     const { setArray } = useArray()
 
-    console.log("Rendering Menubar")
+    // console.log("Rendering Menubar")
     // console.log(array);
 
     const generateNewArray = () => {
@@ -24,7 +28,10 @@ export default function MenuBar() {
                 onClick={generateNewArray}
             >Generate New Array</button>
             <div className="title">Sort Visualizer</div>
-            <button className="sort-btn">Sort</button>
+            <button
+                className="sort-btn"
+                onClick={sortHandler}
+            >Sort</button>
         </div>
     )
 }

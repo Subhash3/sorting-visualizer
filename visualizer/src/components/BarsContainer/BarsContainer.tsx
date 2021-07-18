@@ -1,14 +1,16 @@
 import React from 'react'
+import { useArray } from '../../contexts/arrayProvider';
 import Bar from '../Bar/Bar'
 
 import './BarsContainer.min.css'
 
 interface IFC_BarsContainerProps {
-    array: number[]
 }
 
-export default function BarsContainer({ array }: IFC_BarsContainerProps) {
-    console.log("Rendering Bars Container ", array);
+export default function BarsContainer() {
+    const { array, setArray } = useArray()
+
+    // console.log("Rendering Bars Container ", array);
 
     /*
         width = nb * wb + (nb-1) * spacing
@@ -17,10 +19,6 @@ export default function BarsContainer({ array }: IFC_BarsContainerProps) {
         spacing = space b/w each bar
 
         Hence wb = (width - ((nb-1) * spacing))/(nb)
-
-        spacing = wb
-        width = nb + wb * (nb - 1) * wb
-        wb = width/(nb + nb -1)
     */
 
     const barsContainerStyles = {
@@ -28,12 +26,21 @@ export default function BarsContainer({ array }: IFC_BarsContainerProps) {
     }
 
     let nb = array.length
-    let wb = barsContainerStyles.width / (2 * nb - 1)
-    let spacing = wb + 5
+    let spacing = 2
+    let wb = barsContainerStyles.width / nb
+    wb -= spacing
+    let showNumber = array.length <= 45
+
 
     return (
         <div className="bars-container" style={barsContainerStyles}>
-            {array.map((num, idx) => <Bar val={num} index={idx} key={idx} width={wb} spacing={spacing} />)}
+            {array.map((num, idx) => <Bar val={num}
+                index={idx}
+                key={idx}
+                width={wb}
+                spacing={spacing}
+                showNumber={showNumber}
+            />)}
         </div>
     )
 }
