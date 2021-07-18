@@ -5,9 +5,7 @@ import ArrayProvider from './contexts/arrayProvider';
 function App() {
   return (
     <ArrayProvider>
-      <div className="App">
-        <Visualizer />
-      </div>
+      <Visualizer />
     </ArrayProvider>
   );
 }

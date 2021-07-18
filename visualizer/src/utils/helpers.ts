@@ -1,12 +1,18 @@
-const MIN_NUM = 10
-const MAX_NUM = 100
+export const MIN_NUM = 10
+export const MAX_NUM = 100
+export const ARRAY_LENGTH = 10
 
-export const resetArray = (array: any[number], length: number = 10) => {
-    for (let i = 0; i < length; i++) {
+export const resetArray = (array: number[]) => {
+    for (let i = 0; i < ARRAY_LENGTH; i++) {
         array[i] = getRandomInt(MIN_NUM, MAX_NUM)
     }
 
     return array
+}
+
+export const generateArray = (length: number) => {
+    let arr = new Array(length)
+    return resetArray(arr)
 }
 
 export const mapStateToProps = (state: any) => {

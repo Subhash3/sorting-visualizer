@@ -6,16 +6,17 @@ import './Visualizer.min.css'
 import { resetArray } from '../../utils/helpers'
 
 function Visualizer() {
-    const [array, setArray] = useArray()
+    const { array, setArray } = useArray()
 
     useEffect(() => {
-        setArray(resetArray(array, 10))
+        console.log("Visualizer mounted!")
+        setArray(resetArray(array))
     }, [])
 
     return (
         <div className="visualizer">
             <MenuBar />
-            {array.map((num, idx) => <span key={idx}>{num} </span>)}
+            {array.map((num, idx) => <div key={idx}>{idx}: {num} </div>)}
         </div>
     )
 }
