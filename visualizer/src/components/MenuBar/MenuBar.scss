@@ -1,0 +1,33 @@
+.menu-bar{
+    position: relative;
+    width: 100%;
+    height: 80px;
+    // border: 1px solid blue;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(31, 114, 87);
+    font-family: 'Cascadia Code', 'Monospace', 'Times New Roman';
+
+    .title{
+        position: absolute;
+        font-size: 22px;
+        color: white;
+    }
+
+    button{
+        font-family: 'Cascadia Code', 'Monospace', 'Times New Roman';
+        height: 100%;
+        padding: 10px;
+        background-color: transparent;
+        border: none;
+        color: rgb(235, 235, 235);
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 250ms ease-in-out;
+
+        &:hover{
+            background-color: rgb(21, 87, 65);
+        }
+    }
+}
