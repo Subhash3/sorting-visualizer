@@ -7,6 +7,7 @@ export default function MenuBar() {
     const { array, setArray } = useArray()
 
     console.log("Rendering Menubar")
+    console.log(array);
 
     const generateNewArray = () => {
         console.log("Generating...")

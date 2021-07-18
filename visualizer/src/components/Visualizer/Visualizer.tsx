@@ -4,6 +4,7 @@ import { useArray } from '../../contexts/arrayProvider'
 
 import './Visualizer.min.css'
 import { resetArray } from '../../utils/helpers'
+import BarsContainer from '../BarsContainer/BarsContainer'
 
 function Visualizer() {
     const { array, setArray } = useArray()
@@ -16,7 +17,7 @@ function Visualizer() {
     return (
         <div className="visualizer">
             <MenuBar />
-            {array.map((num, idx) => <div key={idx}>{idx}: {num} </div>)}
+            <BarsContainer />
         </div>
     )
 }
