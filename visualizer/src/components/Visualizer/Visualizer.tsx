@@ -1,15 +1,20 @@
-import React, { ChangeEvent, useEffect } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import MenuBar from '../MenuBar/MenuBar'
 import { useArray } from '../../contexts/arrayProvider'
 
 import './Visualizer.min.css'
-import BarsContainer from '../BarsContainer/BarsContainer'
+import BarsContainer, { IFC_BarsInfo } from '../BarsContainer/BarsContainer'
 import { makeStyles, Slider, withStyles } from '@material-ui/core'
 import { generateArray } from '../../utils/helpers'
 import { bubbleSort } from '../../utils/sort'
 
 function Visualizer() {
     const { array, setArray } = useArray()
+    const initialColors = array.map(num => "")
+    const [barsInfo, setBarsInfo] = useState<IFC_BarsInfo>({
+        array: array,
+        colors: initialColors
+    })
     const styledClasses = useStyles()
 
     // console.log("Rendering Visualizer ", array);
@@ -18,6 +23,14 @@ function Visualizer() {
         console.log("Visualizer mounted!")
         // setArray(resetArray(array))
     }, [])
+
+    useEffect(() => {
+        // console.log("Array changed. Time to change barsInfo");
+        setBarsInfo({
+            array: array,
+            colors: initialColors
+        })
+    }, [array])
 
     const sliderChangeHandler = (e: ChangeEvent<{}>, value: number | number[]) => {
         let newLength: number
@@ -40,7 +53,7 @@ function Visualizer() {
     return (
         <div className="visualizer">
             <MenuBar sortHandler={sortHandler} />
-            <BarsContainer />
+            <BarsContainer barsInfo={barsInfo} />
             <PrettoSlider
                 className={styledClasses.slider}
                 valueLabelDisplay="auto"

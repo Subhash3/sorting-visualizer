@@ -17,4 +17,8 @@
         left: 50%;
         transform: translateX(-50%);
     }
+
+    &.red{
+        background-color: red;
+    }
 }

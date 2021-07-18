@@ -8,9 +8,10 @@ interface IFC_BarProps {
     width: number;
     spacing: number;
     showNumber: Boolean;
+    color: string;
 }
 
-export default function Bar({ val, width, spacing, index, showNumber }: IFC_BarProps) {
+export default function Bar({ val, width, spacing, index, showNumber, color }: IFC_BarProps) {
 
     const barStyles = {
         height: 4 * val,
@@ -21,7 +22,7 @@ export default function Bar({ val, width, spacing, index, showNumber }: IFC_BarP
     // console.log("Width: ", width);
 
     return (
-        <div className="bar" style={barStyles}>
+        <div className={`bar ${color}`} style={barStyles}>
             {
                 showNumber ? <span>{val}</span> : null
             }

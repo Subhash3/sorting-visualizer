@@ -1,14 +1,18 @@
 import React from 'react'
-import { useArray } from '../../contexts/arrayProvider';
 import Bar from '../Bar/Bar'
 
 import './BarsContainer.min.css'
 
+export interface IFC_BarsInfo {
+    array: number[],
+    colors: string[]
+}
 interface IFC_BarsContainerProps {
+    barsInfo: IFC_BarsInfo
 }
 
-export default function BarsContainer() {
-    const { array, setArray } = useArray()
+export default function BarsContainer(props: IFC_BarsContainerProps) {
+    let { array, colors } = props.barsInfo
 
     // console.log("Rendering Bars Container ", array);
 
@@ -33,13 +37,14 @@ export default function BarsContainer() {
 
 
     return (
-        <div className="bars-container" style={barsContainerStyles}>
+        <div className={`bars-container`} style={barsContainerStyles}>
             {array.map((num, idx) => <Bar val={num}
                 index={idx}
                 key={idx}
                 width={wb}
                 spacing={spacing}
                 showNumber={showNumber}
+                color={colors[idx]}
             />)}
         </div>
     )
