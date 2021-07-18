@@ -14,7 +14,7 @@ interface IFC_BarsContainerProps {
 export default function BarsContainer(props: IFC_BarsContainerProps) {
     let { array, colors } = props.barsInfo
 
-    // console.log("Rendering Bars Container ", array);
+    console.log("Rendering Bars Container ");
 
     /*
         width = nb * wb + (nb-1) * spacing

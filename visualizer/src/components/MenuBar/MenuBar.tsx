@@ -1,3 +1,5 @@
+// import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import { useArray } from '../../contexts/arrayProvider'
 import { resetArray } from '../../utils/helpers'
 
@@ -10,7 +12,15 @@ interface MenuBarProps {
 export default function MenuBar({ sortHandler }: MenuBarProps) {
     const { setArray } = useArray()
 
-    // console.log("Rendering Menubar")
+    // useEffect(() => {
+    //     console.log("MenuBar: array updated")
+    // }, [array])
+
+    // useEffect(() => {
+    //     console.log("Menubar: SortHandler updated")
+    // }, [sortHandler])
+
+    console.log("Rendering Menubar")
     // console.log(array);
 
     const generateNewArray = () => {

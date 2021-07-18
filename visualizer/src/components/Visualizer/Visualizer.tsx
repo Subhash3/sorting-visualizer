@@ -13,14 +13,19 @@ function Visualizer() {
     const initialColors = array.map(num => "")
     const [barsInfo, setBarsInfo] = useState<IFC_BarsInfo>({
         array: array,
-        colors: initialColors
+        colors: []
     })
     const styledClasses = useStyles()
 
     // console.log("Rendering Visualizer ", array);
+    console.log(initialColors)
 
     useEffect(() => {
         console.log("Visualizer mounted!")
+        setBarsInfo({
+            array: array,
+            colors: initialColors
+        })
         // setArray(resetArray(array))
     }, [])
 
@@ -77,6 +82,7 @@ const useStyles = makeStyles({
     }
 })
 
+// Copied from Material-UI website
 const PrettoSlider = withStyles({
     root: {
         color: 'rgb(31, 114, 87)',

@@ -1,5 +1,4 @@
 import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
-import { ArrayContextData } from "../contexts/arrayProvider";
 import { sleep } from "./helpers";
 
 const swap = (i: number, j: number, array: number[]) => {
@@ -67,7 +66,7 @@ export const bubbleSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Disp
         }
         // Now the last number is in sorted position
         // Turn in green and wait
-        let highlighted = highlightBars(barsInfo.colors, [j], "purple")
+        let highlighted = highlightBars(barsInfo.colors, [j], "")
         setBarsInfo({
             array,
             colors: highlighted
