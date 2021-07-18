@@ -24,6 +24,7 @@ function Visualizer() {
         // setArray(resetArray(array))
     }, [])
 
+    // When the array is modified, update the barsInfo as well.
     useEffect(() => {
         // console.log("Array changed. Time to change barsInfo");
         setBarsInfo({
@@ -47,7 +48,7 @@ function Visualizer() {
     }
 
     const sortHandler = () => {
-        bubbleSort(array, setArray)
+        bubbleSort(barsInfo, setBarsInfo)
     }
 
     return (
