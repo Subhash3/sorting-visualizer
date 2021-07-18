@@ -1,5 +1,5 @@
 import React, { useContext, createContext, useState, Dispatch, SetStateAction } from "react";
-import { ARRAY_LENGTH, generateArray } from "../utils/helpers";
+import { DEFAULT_ARRAY_LENGTH, generateArray } from "../utils/helpers";
 
 export interface IFC_ProviderProps {
     children?: any
@@ -14,7 +14,7 @@ type ArrayContextValue = {
 export const ArrayContext = createContext<ArrayContextValue | undefined>(undefined)
 
 const ArrayProvider = (props: IFC_ProviderProps) => {
-    const [array, setArray] = useState(generateArray(ARRAY_LENGTH))
+    const [array, setArray] = useState(generateArray(DEFAULT_ARRAY_LENGTH))
 
     return (
         <ArrayContext.Provider value={{ array, setArray }}>

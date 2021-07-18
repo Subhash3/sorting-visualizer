@@ -1,9 +1,9 @@
 export const MIN_NUM = 10
 export const MAX_NUM = 100
-export const ARRAY_LENGTH = 100
+export const DEFAULT_ARRAY_LENGTH = 100
 
 export const resetArray = (array: number[]) => {
-    for (let i = 0; i < ARRAY_LENGTH; i++) {
+    for (let i = 0; i < array.length; i++) {
         array[i] = getRandomInt(MIN_NUM, MAX_NUM)
     }
 
