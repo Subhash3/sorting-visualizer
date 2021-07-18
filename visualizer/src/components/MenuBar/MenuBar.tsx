@@ -4,16 +4,16 @@ import { resetArray } from '../../utils/helpers'
 import './MenuBar.min.css'
 
 export default function MenuBar() {
-    const { array, setArray } = useArray()
+    const { setArray } = useArray()
 
     console.log("Rendering Menubar")
-    console.log(array);
+    // console.log(array);
 
     const generateNewArray = () => {
-        console.log("Generating...")
+        // console.log("Generating...")
         setArray((pervArr) => {
-            console.log("Updating state");
-            return resetArray(pervArr)
+            // console.log("Updating state");
+            return [...resetArray(pervArr)]
         })
     }
 

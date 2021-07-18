@@ -17,7 +17,7 @@ export default function Bar(props: IFC_BarProps) {
 
     return (
         <div className="bar" style={barStyles}>
-            {props.index}
+            {props.val}
         </div>
     )
 }
