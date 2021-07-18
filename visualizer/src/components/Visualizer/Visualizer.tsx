@@ -7,24 +7,31 @@ import { resetArray } from '../../utils/helpers'
 import BarsContainer from '../BarsContainer/BarsContainer'
 
 function Visualizer() {
-    // const [array, setArray] = useState(generateArray(ARRAY_LENGTH))
     const { array, setArray } = useArray()
 
-    console.log("Rendering Visualizer");
+    console.log("Rendering Visualizer ", array);
 
     useEffect(() => {
         console.log("Visualizer mounted!")
-        setArray(resetArray(array))
+        // setArray(resetArray(array))
     }, [])
 
     const swapBars = (i: number, j: number) => {
         console.log(`swapping ${i} and ${j}`);
         setArray((prevArr) => {
-            let temp = prevArr[i]
-            prevArr[i] = prevArr[j]
-            prevArr[j] = temp
+            let swappedArr = []
 
-            return [...prevArr]
+            for (let k = 0; k < prevArr.length; k++) {
+                if (k === i) {
+                    swappedArr.push(prevArr[j])
+                } else if (k === j) {
+                    swappedArr.push(prevArr[i])
+                } else {
+                    swappedArr.push(prevArr[k])
+                }
+            }
+
+            return swappedArr
         })
     }
 

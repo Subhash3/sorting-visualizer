@@ -11,6 +11,14 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+// // eslint-disable-next-line no-extend-native
+// Array.prototype.swap = function (x, y) {
+//   var b = this[x];
+//   this[x] = this[y];
+//   this[y] = b;
+//   return this;
+// }
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
