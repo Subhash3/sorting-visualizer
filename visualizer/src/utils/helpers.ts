@@ -2,6 +2,14 @@ export const MIN_NUM = 10
 export const MAX_NUM = 100
 export const DEFAULT_ARRAY_LENGTH = 30
 
+export const sortingAlgos = {
+    BUBBLE_SORT: "bubble-sort",
+    INSERTION_SORT: "insertion-sort",
+    SELECTION_SORT: "selection-sort",
+    MERGE_SORT: "merge-sort",
+    QUICK_SORT: "quick-sort"
+}
+
 export const resetArray = (array: number[]) => {
     for (let i = 0; i < array.length; i++) {
         array[i] = getRandomInt(MIN_NUM, MAX_NUM)

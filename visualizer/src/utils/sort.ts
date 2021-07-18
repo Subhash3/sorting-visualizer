@@ -1,7 +1,8 @@
 import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
-import { sleep } from "./helpers";
+import { bubbleSort } from './bubble_sort';
+import { sortingAlgos } from './helpers';
 
-const swap = (i: number, j: number, array: number[]) => {
+export const swap = (i: number, j: number, array: number[]) => {
     // console.log(`swapping ${i} and ${j}`);
     let temp = array[i]
     array[i] = array[j]
@@ -10,7 +11,7 @@ const swap = (i: number, j: number, array: number[]) => {
     return [...array]
 }
 
-const highlightBars = (colors: string[], indices: number[], color: string) => {
+export const highlightBars = (colors: string[], indices: number[], color: string) => {
     let highlighted: string[] = []
     for (let k = 0; k < colors.length; k++) {
         if (indices.includes(k)) {
@@ -23,56 +24,25 @@ const highlightBars = (colors: string[], indices: number[], color: string) => {
     return highlighted
 }
 
-export const bubbleSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>) => {
-    // console.log("Before sort: ", array);
-    let { array, } = barsInfo
-
-    let i, j, delay = 2 / array.length
-    for (i = 0; i <= array.length; i++) {
-        for (j = 0; j < array.length - i - 1; j++) {
-            if (array[j] > array[j + 1]) {
-                // These two elements are in wrong order.
-                // Turn them red and wait for a few secs.
-                let highlighted = highlightBars(barsInfo.colors, [j, j + 1], "red")
-                setBarsInfo({
-                    array,
-                    colors: highlighted
-                })
-                await sleep(delay)
-
-                // Now swap these two numbers
-                let swapped = swap(j, j + 1, array)
-
-                // These are in the correct positions
-                // TUrn them green
-                let dehighlited = highlightBars(barsInfo.colors, [j, j + 1], "green")
-
-                // Update barsInfo and wait for a few secs
-                setBarsInfo({
-                    array: swapped,
-                    colors: dehighlited
-                })
-                await sleep(delay)
-            } else {
-                // They are in the positions they are supposed to be in
-                // Turn them green and wait for a few secs
-                let highlighted = highlightBars(barsInfo.colors, [j, j + 1], "green")
-                setBarsInfo({
-                    array,
-                    colors: highlighted
-                })
-                await sleep(delay)
-            }
-        }
-        // Now the last number is in sorted position
-        // Turn in green and wait
-        let highlighted = highlightBars(barsInfo.colors, [j], "")
-        setBarsInfo({
-            array,
-            colors: highlighted
-        })
-        await sleep(delay)
-
+export const sort = (algoName: string, barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>) => {
+    switch (algoName) {
+        case sortingAlgos.BUBBLE_SORT:
+            bubbleSort(barsInfo, setBarsInfo)
+            break
+        case sortingAlgos.SELECTION_SORT:
+            console.log(`${algoName} hasn't been implemented yet`)
+            break
+        case sortingAlgos.INSERTION_SORT:
+            console.log(`${algoName} hasn't been implemented yet`)
+            break
+        case sortingAlgos.MERGE_SORT:
+            console.log(`${algoName} hasn't been implemented yet`)
+            break
+        case sortingAlgos.QUICK_SORT:
+            console.log(`${algoName} hasn't been implemented yet`)
+            break
+        default:
+            bubbleSort(barsInfo, setBarsInfo)
+            break
     }
-    // console.log("After sort: ", array);
 }

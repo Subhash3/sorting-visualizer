@@ -5,12 +5,13 @@ import { useArray } from '../../contexts/arrayProvider'
 import './Visualizer.min.css'
 import BarsContainer, { IFC_BarsInfo } from '../BarsContainer/BarsContainer'
 import { makeStyles, Slider, withStyles } from '@material-ui/core'
-import { generateArray } from '../../utils/helpers'
-import { bubbleSort } from '../../utils/sort'
+import { generateArray, sortingAlgos } from '../../utils/helpers'
+import { sort } from '../../utils/sort'
 
 function Visualizer() {
     const { array, setArray } = useArray()
     const initialColors = array.map(num => "")
+    const [sortingAlgo, setSortingAlgo] = useState(sortingAlgos.BUBBLE_SORT)
     const [barsInfo, setBarsInfo] = useState<IFC_BarsInfo>({
         array: array,
         colors: []
@@ -18,7 +19,7 @@ function Visualizer() {
     const styledClasses = useStyles()
 
     // console.log("Rendering Visualizer ", array);
-    console.log(initialColors)
+    // console.log(initialColors)
 
     useEffect(() => {
         console.log("Visualizer mounted!")
@@ -53,7 +54,13 @@ function Visualizer() {
     }
 
     const sortHandler = () => {
-        bubbleSort(barsInfo, setBarsInfo)
+        sort(sortingAlgo, barsInfo, setBarsInfo)
+    }
+
+    const algoChangeHandler = (e: any) => {
+        let value = e.target.dataset.value
+        setSortingAlgo(value)
+        // console.log(value)
     }
 
     return (
@@ -69,6 +76,29 @@ function Visualizer() {
                 max={200}
                 onChange={sliderChangeHandler}
             />
+            <div className="sort-algo-options">
+                <div
+                    className="sort-algo bubble"
+                    data-value={sortingAlgos.BUBBLE_SORT}
+                    onClick={algoChangeHandler}
+                >Bubble Sort</div>
+                <div
+                    className="sort-algo selection"
+                    data-value={sortingAlgos.SELECTION_SORT}
+                    onClick={algoChangeHandler}
+                >Selction Sort</div>
+                <div
+                    className="sort-algo insertion"
+                    data-value={sortingAlgos.INSERTION_SORT}
+                    onClick={algoChangeHandler}
+                >Insertion Sort</div>
+                <div
+                    className="sort-algo merge"
+                    data-value={sortingAlgos.MERGE_SORT}
+                    onClick={algoChangeHandler}
+                >Merge Sort</div>
+                <div className="sort-algo quick" data-value={sortingAlgos.QUICK_SORT}>Quick Sort</div>
+            </div>
         </div>
     )
 }

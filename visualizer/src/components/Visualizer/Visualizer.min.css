@@ -1,1 +1,1 @@
-.visualizer{width:100%;height:100vh}
+.visualizer{width:100%;height:100vh}.visualizer .sort-algo-options{display:-webkit-box;display:-ms-flexbox;display:flex;width:1000px;height:80px;margin:40px auto 0 auto;border:1px solid red;-webkit-box-pack:space-evenly;-ms-flex-pack:space-evenly;justify-content:space-evenly;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-family:'Cascadia Code', 'Monospace'}
