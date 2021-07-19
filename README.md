@@ -7,4 +7,6 @@
 
 #### ToDo
 - [ ] Bubble Sort
+    - [x] Sorting algo
     - [ ] Turn the bubble bar(number) purple or some other color in each outer loop iteration.
+- [x] Selection Sort
