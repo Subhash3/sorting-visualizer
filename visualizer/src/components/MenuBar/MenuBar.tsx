@@ -37,7 +37,7 @@ export default function MenuBar({ sortHandler }: MenuBarProps) {
                 className="generate-new-array-btn"
                 onClick={generateNewArray}
             >Generate New Array</button>
-            <div className="title">Sort Visualizer</div>
+            <div className="title">Sorting Visualizer</div>
             <button
                 className="sort-btn"
                 onClick={sortHandler}
