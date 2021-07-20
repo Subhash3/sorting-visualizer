@@ -37,29 +37,24 @@ export const animate = async (newArray: number[], newColors: string[], setBarsIn
     await sleep(delay)
 }
 
-export const sort = (algoName: string, speed: number, barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>) => {
+export const sort = async (algoName: string, speed: number, barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>) => {
     speed = scale(speed, 1, 10, 1, 100)
     switch (algoName) {
         case sortingAlgos.BUBBLE_SORT:
-            bubbleSort(barsInfo, setBarsInfo, speed)
-            break
+            return bubbleSort(barsInfo, setBarsInfo, speed)
         case sortingAlgos.SELECTION_SORT:
             // console.log(`${algoName} hasn't been implemented yet`)
-            selectionSort(barsInfo, setBarsInfo, speed)
-            break
+            return selectionSort(barsInfo, setBarsInfo, speed)
         case sortingAlgos.INSERTION_SORT:
-            insertionSort(barsInfo, setBarsInfo, speed)
-            // console.log(`${algoName} hasn't been implemented yet`)
+            return insertionSort(barsInfo, setBarsInfo, speed)
             break
         case sortingAlgos.MERGE_SORT:
             // console.log(`${algoName} hasn't been implemented yet`)
-            megeSort(barsInfo, setBarsInfo, speed)
-            break
+            return megeSort(barsInfo, setBarsInfo, speed)
         case sortingAlgos.QUICK_SORT:
             console.log(`${algoName} hasn't been implemented yet`)
             break
         default:
-            bubbleSort(barsInfo, setBarsInfo, speed)
-            break
+            return bubbleSort(barsInfo, setBarsInfo, speed)
     }
 }
