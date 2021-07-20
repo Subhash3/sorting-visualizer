@@ -1,3 +1,4 @@
+import { insertionSort } from './insertion_sort';
 import { selectionSort } from './selection_sort';
 import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
 import { bubbleSort } from './bubble_sort';
@@ -45,7 +46,8 @@ export const sort = (algoName: string, speed: number, barsInfo: IFC_BarsInfo, se
             selectionSort(barsInfo, setBarsInfo, speed)
             break
         case sortingAlgos.INSERTION_SORT:
-            console.log(`${algoName} hasn't been implemented yet`)
+            insertionSort(barsInfo, setBarsInfo, speed)
+            // console.log(`${algoName} hasn't been implemented yet`)
             break
         case sortingAlgos.MERGE_SORT:
             console.log(`${algoName} hasn't been implemented yet`)
