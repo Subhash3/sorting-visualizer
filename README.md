@@ -1,7 +1,7 @@
 # Sorting Visualizer
 
 #### ToDo
-- [ ] Bubble Sort
+- [x] Bubble Sort
     - [x] Sorting algo
     - [ ] Turn the bubbled bar(number) purple or some other color in each outer loop iteration.
 	- [x] Convert the colors into a context to aviod updating it in every render <Visualizer/> Component.
