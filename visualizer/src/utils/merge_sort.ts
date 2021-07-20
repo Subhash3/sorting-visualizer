@@ -6,13 +6,13 @@ export const megeSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispat
     let delay = 1 / speed
 
     const mergeTwoSortedArrays = async (arr: number[], left: number, mid: number, right: number) => {
-        console.log({ left, mid, right })
+        // console.log({ left, mid, right })
         // We're actually dealing with an array from left1 to right2 in the original array
         // [.....left1  ..... right2.....]
         // For each element in the 2nd part find its correct position and shift the elements accordingly
         // This is very similar to insertion sort
 
-        console.log("Merging", "from ", left, "to", right)
+        // console.log("Merging", "from ", left, "to", right)
 
         for (let i = mid; i <= right; i++) {
             let current = arr[i]
@@ -69,9 +69,11 @@ export const megeSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispat
     let n = barsInfo.array.length
     let array = barsInfo.array
 
-    console.log(array)
+    // console.log(array)
 
     await mergeSortUtil(array, 0, n - 1)
-    console.log(array)
+    // console.log(array)
     await animate(array, barsInfo.colors, setBarsInfo, 0)
+
+    return array
 }
