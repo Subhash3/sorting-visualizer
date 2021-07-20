@@ -5,7 +5,8 @@ import { highlightBars } from "./sort"
 export const megeSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>, speed: number) => {
     let delay = 1 / speed
 
-    const mergeTwoSortedArrays = async (arr: number[], left: number, right: number) => {
+    const mergeTwoSortedArrays = async (arr: number[], left: number, mid: number, right: number) => {
+        console.log({ left, mid, right })
         // We're actually dealing with an array from left1 to right2 in the original array
         // [.....left1  ..... right2.....]
         // For each element in the 2nd part find its correct position and shift the elements accordingly
@@ -13,12 +14,9 @@ export const megeSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispat
 
         console.log("Merging", "from ", left, "to", right)
 
-        for (let i = left + 1; i <= right; i++) {
+        for (let i = mid; i <= right; i++) {
             let current = arr[i]
             let j
-
-            let highlighted = highlightBars(barsInfo.colors, [i], "red")
-            await animate(array, highlighted, setBarsInfo, delay)
 
             for (j = i - 1; j >= left; j--) {
                 if (arr[j] <= current) {
@@ -26,30 +24,25 @@ export const megeSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispat
                 }
             }
             j += 1
-            highlighted = highlightBars(highlighted, [j], "red")
 
-            // if i == j then the element is in the correct position
+            // if i == j then the element is already in the correct position
+            let highlighted
             let iBackup = i
             if (i !== j) {
-                // highlight this bar as we need to replace it
-                highlighted = highlightBars(highlighted, [j], "red")
+                highlighted = highlightBars(barsInfo.colors, [i, j], "red")
                 await animate(array, highlighted, setBarsInfo, delay)
 
-
-                // Move all the element from this j to i one step towards right
                 while (i > j) {
                     arr[i] = arr[i - 1]
                     i--;
                 }
 
-                // Bring the current element to this correct position
                 arr[i] = current;
-                highlighted = highlightBars(highlighted, [iBackup], "red")
             }
             i = iBackup
-
-            highlighted = highlightBars(highlighted, [j], "green")
+            highlighted = highlightBars(barsInfo.colors, [i, j], "green")
             await animate(array, highlighted, setBarsInfo, delay)
+
         }
         // console.log("After merge:", arr)
 
@@ -57,20 +50,20 @@ export const megeSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispat
     }
 
     const mergeSortUtil = async (arr: number[], left: number, right: number) => {
-        console.log({ left, right })
+        // console.log({ left, right })
         let highlightedBounds = highlightBars(barsInfo.colors, [left], "yellow")
         highlightedBounds = highlightBars(highlightedBounds, [right], "blue")
 
         await animate(arr, highlightedBounds, setBarsInfo, delay)
 
-        if (left >= right) {
+        if (left >= right || right === left + 1) {
             return
         }
         let mid = Math.floor((left + right) / 2)
 
         await mergeSortUtil(arr, left, mid)
         await mergeSortUtil(arr, mid + 1, right)
-        await mergeTwoSortedArrays(arr, left, right)
+        await mergeTwoSortedArrays(arr, left, mid, right)
     }
 
     let n = barsInfo.array.length
