@@ -27,7 +27,7 @@ export default function SortingAlgoOptions({ sortingAlgo, algoChangeHandler }: I
                 onClick={algoChangeHandler}
             >Insertion Sort</div>
             <div
-                className={`sort-algo merge not-implemented ${sortingAlgo === sortingAlgos.MERGE_SORT ? "active" : ""}`}
+                className={`sort-algo merge ${sortingAlgo === sortingAlgos.MERGE_SORT ? "active" : ""}`}
                 data-value={sortingAlgos.MERGE_SORT}
                 onClick={algoChangeHandler}
             >Merge Sort</div>

@@ -1,3 +1,4 @@
+import { megeSort } from './merge_sort';
 import { insertionSort } from './insertion_sort';
 import { selectionSort } from './selection_sort';
 import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
@@ -51,7 +52,8 @@ export const sort = (algoName: string, speed: number, barsInfo: IFC_BarsInfo, se
             // console.log(`${algoName} hasn't been implemented yet`)
             break
         case sortingAlgos.MERGE_SORT:
-            console.log(`${algoName} hasn't been implemented yet`)
+            // console.log(`${algoName} hasn't been implemented yet`)
+            megeSort(barsInfo, setBarsInfo, speed)
             break
         case sortingAlgos.QUICK_SORT:
             console.log(`${algoName} hasn't been implemented yet`)
