@@ -7,7 +7,7 @@ export const bubbleSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Disp
     // console.log("Before sort: ", array);
     let { array, } = barsInfo
 
-    let i, j, delay = 0.2 / array.length
+    let i, j, delay = 1
     for (i = 0; i <= array.length; i++) {
         for (j = 0; j < array.length - i - 1; j++) {
             if (array[j] > array[j + 1]) {

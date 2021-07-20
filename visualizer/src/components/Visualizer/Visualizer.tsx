@@ -7,11 +7,13 @@ import BarsContainer, { IFC_BarsInfo } from '../BarsContainer/BarsContainer'
 import { makeStyles, Slider, withStyles } from '@material-ui/core'
 import { generateArray, sortingAlgos } from '../../utils/helpers'
 import { sort } from '../../utils/sort'
+import SortingAlgoOptions from '../SortingAlgoOptions/SortingAlgoOptions'
 
 function Visualizer() {
     const { array, setArray } = useArray()
     const initialColors = array.map(num => "")
     const [sortingAlgo, setSortingAlgo] = useState(sortingAlgos.BUBBLE_SORT)
+    const [sortingSpeed, setSortingSpeed] = useState<number>(1)
     const [barsInfo, setBarsInfo] = useState<IFC_BarsInfo>({
         array: array,
         colors: []
@@ -53,6 +55,18 @@ function Visualizer() {
         })
     }
 
+    const speedChangeHandler = (e: ChangeEvent<{}>, value: number | number[]) => {
+        let newVal: number
+
+        if (typeof value === "number") {
+            newVal = value
+        } else {
+            newVal = value[0]
+        }
+
+        setSortingSpeed(newVal)
+    }
+
     const sortHandler = () => {
         sort(sortingAlgo, barsInfo, setBarsInfo)
     }
@@ -76,32 +90,20 @@ function Visualizer() {
                 max={200}
                 onChange={sliderChangeHandler}
             />
-            <div className="sort-algo-options">
-                <div
-                    className={`sort-algo bubble ${sortingAlgo === sortingAlgos.BUBBLE_SORT ? "active" : ""}`}
-                    data-value={sortingAlgos.BUBBLE_SORT}
-                    onClick={algoChangeHandler}
-                >Bubble Sort</div>
-                <div
-                    className={`sort-algo selection ${sortingAlgo === sortingAlgos.SELECTION_SORT ? "active" : ""}`}
-                    data-value={sortingAlgos.SELECTION_SORT}
-                    onClick={algoChangeHandler}
-                >Selction Sort</div>
-                <div
-                    className={`sort-algo insertion ${sortingAlgo === sortingAlgos.INSERTION_SORT ? "active" : ""}`}
-                    data-value={sortingAlgos.INSERTION_SORT}
-                    onClick={algoChangeHandler}
-                >Insertion Sort</div>
-                <div
-                    className={`sort-algo merge ${sortingAlgo === sortingAlgos.MERGE_SORT ? "active" : ""}`}
-                    data-value={sortingAlgos.MERGE_SORT}
-                    onClick={algoChangeHandler}
-                >Merge Sort</div>
-                <div className={`sort-algo merge ${sortingAlgo === sortingAlgos.QUICK_SORT ? "active" : ""}`}
-                    data-value={sortingAlgos.QUICK_SORT}
-                    onClick={algoChangeHandler}
-                >Quick Sort</div>
+            <div className="speed-slider-container">
+                {sortingSpeed}
+                <PrettoSlider
+                    className={styledClasses.speedSlider}
+                    orientation="vertical"
+                    valueLabelDisplay="auto"
+                    aria-label="pretto slider"
+                    defaultValue={1}
+                    min={1}
+                    max={10}
+                    onChange={speedChangeHandler}
+                />
             </div>
+            <SortingAlgoOptions sortingAlgo={sortingAlgo} algoChangeHandler={algoChangeHandler} />
         </div>
     )
 }
@@ -112,7 +114,20 @@ const useStyles = makeStyles({
         width: 1000,
         left: '50%',
         transform: 'translateX(-50%)',
-    }
+    },
+    speedSlider: {
+        position: "absolute",
+        right: 10,
+        top: 0,
+        height: '50px',
+        // width: '14px !important',
+        rail: {
+            height: 24,
+            width: "14px !important",
+            borderRadius: 24,
+            opacity: 1,
+        }
+    },
 })
 
 // Copied from Material-UI website

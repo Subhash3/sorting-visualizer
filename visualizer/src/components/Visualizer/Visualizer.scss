@@ -38,4 +38,28 @@
             }
         }
     }
+
+    .speed-slider-container{
+        position: absolute;
+        top: 50%;
+        right: 80px;
+        transform: translateY(-50%);
+        height: 400px;
+        width: 50px;
+        border: 1px solid red;
+
+        .MuiSlider-track{
+            width: 10px;
+            // border: 1px solid yellow;
+        }
+
+        .MuiSlider-rail{
+            width: 10px;
+        }
+
+        .MuiSlider-thumb{
+            right: -2px;
+            // border: 1px solid blue;
+        }
+    }
 }
