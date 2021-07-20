@@ -68,7 +68,7 @@ function Visualizer() {
     }
 
     const sortHandler = () => {
-        sort(sortingAlgo, barsInfo, setBarsInfo)
+        sort(sortingAlgo, sortingSpeed, barsInfo, setBarsInfo)
     }
 
     const algoChangeHandler = (e: any) => {
@@ -91,13 +91,13 @@ function Visualizer() {
                 onChange={sliderChangeHandler}
             />
             <div className="speed-slider-container">
-                {sortingSpeed}
+                {/* {sortingSpeed} */}
                 <PrettoSlider
                     className={styledClasses.speedSlider}
                     orientation="vertical"
-                    valueLabelDisplay="auto"
+                    // valueLabelDisplay="auto"
                     aria-label="pretto slider"
-                    defaultValue={1}
+                    defaultValue={3}
                     min={1}
                     max={10}
                     onChange={speedChangeHandler}

@@ -3,11 +3,11 @@ import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
 import { sleep } from "./helpers";
 import { swap, highlightBars } from './sort';
 
-export const bubbleSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>) => {
+export const bubbleSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>, speed: number) => {
     // console.log("Before sort: ", array);
     let { array, } = barsInfo
 
-    let i, j, delay = 1
+    let i, j, delay = 1 / speed
     for (i = 0; i <= array.length; i++) {
         for (j = 0; j < array.length - i - 1; j++) {
             if (array[j] > array[j + 1]) {

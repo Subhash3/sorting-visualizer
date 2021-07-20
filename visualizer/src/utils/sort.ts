@@ -1,7 +1,7 @@
 import { selectionSort } from './selection_sort';
 import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
 import { bubbleSort } from './bubble_sort';
-import { sortingAlgos } from './helpers';
+import { scale, sortingAlgos } from './helpers';
 
 export const swap = (i: number, j: number, array: number[]) => {
     // console.log(`swapping ${i} and ${j}`);
@@ -25,14 +25,15 @@ export const highlightBars = (colors: string[], indices: number[], color: string
     return highlighted
 }
 
-export const sort = (algoName: string, barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>) => {
+export const sort = (algoName: string, speed: number, barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>) => {
+    speed = scale(speed, 1, 10, 1, 100)
     switch (algoName) {
         case sortingAlgos.BUBBLE_SORT:
-            bubbleSort(barsInfo, setBarsInfo)
+            bubbleSort(barsInfo, setBarsInfo, speed)
             break
         case sortingAlgos.SELECTION_SORT:
             // console.log(`${algoName} hasn't been implemented yet`)
-            selectionSort(barsInfo, setBarsInfo)
+            selectionSort(barsInfo, setBarsInfo, speed)
             break
         case sortingAlgos.INSERTION_SORT:
             console.log(`${algoName} hasn't been implemented yet`)
@@ -44,7 +45,7 @@ export const sort = (algoName: string, barsInfo: IFC_BarsInfo, setBarsInfo: Reac
             console.log(`${algoName} hasn't been implemented yet`)
             break
         default:
-            bubbleSort(barsInfo, setBarsInfo)
+            bubbleSort(barsInfo, setBarsInfo, speed)
             break
     }
 }

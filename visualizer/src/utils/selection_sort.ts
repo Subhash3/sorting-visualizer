@@ -2,10 +2,10 @@ import { highlightBars, swap } from './sort';
 import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
 import { sleep } from './helpers';
 
-export const selectionSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>) => {
+export const selectionSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>, speed: number) => {
     let { array, colors } = barsInfo
     let n = array.length
-    let delay = 5 / n
+    let delay = 1 / speed
 
     let lastIndex = n - 1
 

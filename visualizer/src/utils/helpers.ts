@@ -37,3 +37,8 @@ function getRandomInt(min: number, max: number) {
 export const sleep = (delay: number) => {
     return new Promise((resolve) => setTimeout(resolve, delay * 1000));
 }
+
+// https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
+export function scale(number: number, inMin: number, inMax: number, outMin: number, outMax: number) {
+    return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+}

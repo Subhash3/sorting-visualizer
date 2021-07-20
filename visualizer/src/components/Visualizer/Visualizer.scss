@@ -44,9 +44,23 @@
         top: 50%;
         right: 80px;
         transform: translateY(-50%);
-        height: 400px;
-        width: 50px;
-        border: 1px solid red;
+        height: 50%;
+        width: 100px;
+        // border: 1px solid red;
+        font-family: 'Cascadia Code', 'Monospace';
+
+        &::before{
+            content: 'Adjust Speed';
+            position: absolute;
+            width: 100px;
+            top: calc( 100% + 10px );
+        }
+
+        .MuiSlider-root{
+            left: 50%;
+            transform: translateX(-50%);
+            // border: 1px solid red;
+        }
 
         .MuiSlider-track{
             width: 10px;
