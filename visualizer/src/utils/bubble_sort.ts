@@ -1,7 +1,7 @@
 
 import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
 import { sleep } from "./helpers";
-import { swap, highlightBars } from './sort';
+import { swap, highlightBars, animate } from './sort';
 
 export const bubbleSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>, speed: number) => {
     // console.log("Before sort: ", array);
@@ -14,11 +14,7 @@ export const bubbleSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Disp
                 // These two elements are in wrong order.
                 // Turn them red and wait for a few secs.
                 let highlighted = highlightBars(barsInfo.colors, [j, j + 1], "red")
-                setBarsInfo({
-                    array,
-                    colors: highlighted
-                })
-                await sleep(delay)
+                await animate(array, highlighted, setBarsInfo, delay)
 
                 // Now swap these two numbers
                 let swapped = swap(j, j + 1, array)
@@ -28,31 +24,18 @@ export const bubbleSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Disp
                 let dehighlited = highlightBars(barsInfo.colors, [j, j + 1], "green")
 
                 // Update barsInfo and wait for a few secs
-                setBarsInfo({
-                    array: swapped,
-                    colors: dehighlited
-                })
-                await sleep(delay)
+                await animate(swapped, dehighlited, setBarsInfo, delay)
             } else {
                 // They are in the positions they are supposed to be in
                 // Turn them green and wait for a few secs
                 let highlighted = highlightBars(barsInfo.colors, [j, j + 1], "green")
-                setBarsInfo({
-                    array,
-                    colors: highlighted
-                })
-                await sleep(delay)
+                await animate(array, highlighted, setBarsInfo, delay)
             }
         }
         // Now the last number is in sorted position
         // Turn in green and wait
         let highlighted = highlightBars(barsInfo.colors, [j], "")
-        setBarsInfo({
-            array,
-            colors: highlighted
-        })
-        await sleep(delay)
-
+        await animate(array, highlighted, setBarsInfo, delay)
     }
     // console.log("After sort: ", array);
 }

@@ -1,6 +1,5 @@
-import { highlightBars, swap } from './sort';
+import { highlightBars, swap, animate } from './sort';
 import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
-import { sleep } from './helpers';
 
 export const selectionSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>, speed: number) => {
     let { array, colors } = barsInfo
@@ -22,11 +21,7 @@ export const selectionSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.D
 
             if (i === indexOfLargest) {
                 let highlighted = highlightBars(colors, [i], "purple")
-                setBarsInfo({
-                    array,
-                    colors: highlighted
-                })
-                await sleep(delay)
+                await animate(array, highlighted, setBarsInfo, delay)
             }
         }
         // Now we have the largest element.
@@ -35,19 +30,11 @@ export const selectionSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.D
 
         // Highlight the last element before swapping
         let highlighted = highlightBars(colors, [lastIndex], "red")
-        setBarsInfo({
-            array,
-            colors: highlighted
-        })
-        await sleep(delay)
+        await animate(array, highlighted, setBarsInfo, delay)
 
         let swapped = swap(lastIndex, indexOfLargest, array)
         let dehighlighted = highlightBars(colors, [lastIndex, indexOfLargest], "")
-        setBarsInfo({
-            array: [...swapped],
-            colors: dehighlighted
-        })
-        await sleep(delay)
+        await animate(swapped, dehighlighted, setBarsInfo, delay)
         array = [...swapped]
         lastIndex -= 1
     }

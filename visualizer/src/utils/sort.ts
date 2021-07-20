@@ -1,6 +1,7 @@
 import { selectionSort } from './selection_sort';
 import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
 import { bubbleSort } from './bubble_sort';
+import { sleep } from './helpers';
 import { scale, sortingAlgos } from './helpers';
 
 export const swap = (i: number, j: number, array: number[]) => {
@@ -23,6 +24,14 @@ export const highlightBars = (colors: string[], indices: number[], color: string
     }
 
     return highlighted
+}
+
+export const animate = async (newArray: number[], newColors: string[], setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>, delay: number) => {
+    setBarsInfo({
+        array: [...newArray],
+        colors: [...newColors]
+    })
+    await sleep(delay)
 }
 
 export const sort = (algoName: string, speed: number, barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>) => {
