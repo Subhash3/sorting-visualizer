@@ -1,12 +1,14 @@
 import React from 'react';
 import Visualizer from './components/Visualizer/Visualizer';
-import ArrayProvider from './contexts/arrayProvider';
+// import ArrayProvider from './contexts/arrayProvider';
+// import BarColorsProvider from './contexts/barColorsProvider';
+import BarsInfoProvider from './contexts/barsInfoProvider';
 
 function App() {
   return (
-    <ArrayProvider>
+    <BarsInfoProvider>
       <Visualizer />
-    </ArrayProvider>
+    </BarsInfoProvider>
   );
 }
 

@@ -4,7 +4,8 @@
 - [ ] Bubble Sort
     - [x] Sorting algo
     - [ ] Turn the bubbled bar(number) purple or some other color in each outer loop iteration.
-	- [ ] Convert the colors into a context to aviod updating it in every render <Visualizer/> Component.
+	- [x] Convert the colors into a context to aviod updating it in every render <Visualizer/> Component.
+- [x] Merge array and colors and provider them together are barsInfo
 - [x] Selection Sort
 - [ ] Insertion Sort
 - [ ] Merge Sort

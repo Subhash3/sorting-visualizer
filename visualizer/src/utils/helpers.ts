@@ -23,6 +23,19 @@ export const generateArray = (length: number) => {
     return resetArray(arr)
 }
 
+export const resetBarColors = (colors: string[]) => {
+    for (let i = 0; i < colors.length; i++) {
+        colors[i] = ""
+    }
+
+    return colors
+}
+
+export const generateBarColors = (length: number) => {
+    let colors = new Array<string>(length)
+    return resetBarColors(colors)
+}
+
 export const mapStateToProps = (state: any) => {
     return { ...state }
 }

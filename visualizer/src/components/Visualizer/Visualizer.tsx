@@ -1,23 +1,20 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import MenuBar from '../MenuBar/MenuBar'
-import { useArray } from '../../contexts/arrayProvider'
+// import { useArray } from '../../contexts/arrayProvider'
 
 import './Visualizer.min.css'
-import BarsContainer, { IFC_BarsInfo } from '../BarsContainer/BarsContainer'
+import BarsContainer from '../BarsContainer/BarsContainer'
 import { makeStyles, Slider, withStyles } from '@material-ui/core'
-import { generateArray, sortingAlgos } from '../../utils/helpers'
+import { generateArray, generateBarColors, sortingAlgos } from '../../utils/helpers'
 import { sort } from '../../utils/sort'
 import SortingAlgoOptions from '../SortingAlgoOptions/SortingAlgoOptions'
+import { useBarsInfo } from '../../contexts/barsInfoProvider'
 
 function Visualizer() {
-    const { array, setArray } = useArray()
-    const initialColors = array.map(num => "")
     const [sortingAlgo, setSortingAlgo] = useState(sortingAlgos.BUBBLE_SORT)
     const [sortingSpeed, setSortingSpeed] = useState<number>(1)
-    const [barsInfo, setBarsInfo] = useState<IFC_BarsInfo>({
-        array: array,
-        colors: []
-    })
+    const { barsInfo, setBarsInfo } = useBarsInfo()
+
     const styledClasses = useStyles()
 
     // console.log("Rendering Visualizer ", array);
@@ -25,21 +22,8 @@ function Visualizer() {
 
     useEffect(() => {
         console.log("Visualizer mounted!")
-        setBarsInfo({
-            array: array,
-            colors: initialColors
-        })
-        // setArray(resetArray(array))
     }, [])
 
-    // When the array is modified, update the barsInfo as well.
-    useEffect(() => {
-        // console.log("Array changed. Time to change barsInfo");
-        setBarsInfo({
-            array: array,
-            colors: initialColors
-        })
-    }, [array])
 
     const sliderChangeHandler = (e: ChangeEvent<{}>, value: number | number[]) => {
         let newLength: number
@@ -50,8 +34,15 @@ function Visualizer() {
             newLength = value[0]
         }
 
-        setArray((prevArr) => {
-            return [...generateArray(newLength)]
+        // setArray((prevArr) => {
+        //     return [...generateArray(newLength)]
+        // })
+
+        setBarsInfo(prevBarsInfo => {
+            return {
+                array: [...generateArray(newLength)],
+                colors: [...generateBarColors(newLength)]
+            }
         })
     }
 

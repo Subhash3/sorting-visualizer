@@ -1,7 +1,8 @@
 // import { useEffect } from 'react'
 // import { useEffect } from 'react'
-import { useArray } from '../../contexts/arrayProvider'
-import { resetArray } from '../../utils/helpers'
+// import { useArray } from '../../contexts/arrayProvider'
+import { useBarsInfo } from '../../contexts/barsInfoProvider'
+import { resetArray, resetBarColors } from '../../utils/helpers'
 
 import './MenuBar.min.css'
 
@@ -10,7 +11,8 @@ interface MenuBarProps {
 }
 
 export default function MenuBar({ sortHandler }: MenuBarProps) {
-    const { setArray } = useArray()
+    // const { setArray } = useArray()
+    const { setBarsInfo } = useBarsInfo()
 
     // useEffect(() => {
     //     console.log("MenuBar: array updated")
@@ -25,9 +27,16 @@ export default function MenuBar({ sortHandler }: MenuBarProps) {
 
     const generateNewArray = () => {
         // console.log("Generating...")
-        setArray((pervArr) => {
-            // console.log("Updating state");
-            return [...resetArray(pervArr)]
+        // setArray((pervArr) => {
+        //     // console.log("Updating state");
+        //     return [...resetArray(pervArr)]
+        // })
+
+        setBarsInfo(prevBarsInfo => {
+            return {
+                array: resetArray(prevBarsInfo.array),
+                colors: resetBarColors(prevBarsInfo.colors)
+            }
         })
     }
 
