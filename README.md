@@ -8,7 +8,7 @@
 - [x] Merge array and colors and provider them together are barsInfo
 - [x] Selection Sort
 - [x] Insertion Sort
-- [ ] Merge Sort
+- [x] Merge Sort
 - [ ] Quick Sort
 - [ ] Heap Sort
 - [x] Add a slider to change the speed of the sorting process.
