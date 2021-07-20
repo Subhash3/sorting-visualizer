@@ -1,6 +1,5 @@
 
 import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
-import { sleep } from "./helpers";
 import { swap, highlightBars, animate } from './sort';
 
 export const bubbleSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispatch<React.SetStateAction<IFC_BarsInfo>>, speed: number) => {
