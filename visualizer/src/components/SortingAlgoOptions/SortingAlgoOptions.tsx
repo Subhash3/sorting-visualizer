@@ -1,6 +1,8 @@
 import React from 'react'
 import { sortingAlgos } from '../../utils/helpers'
 
+import './SortingAlgoOptions.min.css'
+
 interface IFC_SortingAlgoOptionsProps {
     sortingAlgo: string,
     algoChangeHandler: React.MouseEventHandler<HTMLDivElement>
@@ -25,11 +27,11 @@ export default function SortingAlgoOptions({ sortingAlgo, algoChangeHandler }: I
                 onClick={algoChangeHandler}
             >Insertion Sort</div>
             <div
-                className={`sort-algo merge ${sortingAlgo === sortingAlgos.MERGE_SORT ? "active" : ""}`}
+                className={`sort-algo merge not-implemented ${sortingAlgo === sortingAlgos.MERGE_SORT ? "active" : ""}`}
                 data-value={sortingAlgos.MERGE_SORT}
                 onClick={algoChangeHandler}
             >Merge Sort</div>
-            <div className={`sort-algo merge ${sortingAlgo === sortingAlgos.QUICK_SORT ? "active" : ""}`}
+            <div className={`sort-algo merge not-implemented ${sortingAlgo === sortingAlgos.QUICK_SORT ? "active" : ""}`}
                 data-value={sortingAlgos.QUICK_SORT}
                 onClick={algoChangeHandler}
             >Quick Sort</div>

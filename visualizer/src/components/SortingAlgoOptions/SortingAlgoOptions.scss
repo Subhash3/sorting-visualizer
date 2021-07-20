@@ -1,0 +1,42 @@
+
+.sort-algo-options{
+    display: flex;
+    width: 1000px;
+    height: 40px;
+    margin: 50px auto 0 auto;
+    // border: 1px solid red;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Cascadia Code', 'Monospace';
+
+    div{
+        &.not-implemented{
+            background-color: #55645f;
+            pointer-events: none;
+        }
+
+        position: relative;
+        display: grid;
+        place-items: center;
+        padding: 0 30px;
+        height: 100%;
+        background-color: #1f7257;
+        color: white;
+        cursor: pointer;
+        transition: background-color 250ms ease-in-out;
+
+        &:hover, &.active{
+            background-color: #06251b;
+        }
+
+        &.active::before{
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 3px;
+            bottom: -5px;
+            background-color: inherit;
+            transition: background-color 250ms ease-in-out;
+        }
+    }
+}
