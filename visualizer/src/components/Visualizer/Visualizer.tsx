@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import MenuBar from '../MenuBar/MenuBar'
 // import { useArray } from '../../contexts/arrayProvider'
 
@@ -14,6 +14,7 @@ function Visualizer() {
     const [sortingAlgo, setSortingAlgo] = useState(sortingAlgos.BUBBLE_SORT)
     const [sortingSpeed, setSortingSpeed] = useState<number>(1)
     const { barsInfo, setBarsInfo } = useBarsInfo()
+    const sortTestResultRef = useRef<HTMLDivElement>(null)
 
     const styledClasses = useStyles()
 
@@ -59,8 +60,16 @@ function Visualizer() {
         setSortingSpeed(newVal)
     }
 
-    const sortHandler = () => {
-        sort(sortingAlgo, sortingSpeed, barsInfo, setBarsInfo)
+    const sortHandler = async () => {
+        let beforeSorting = [...barsInfo.array]
+        let actualSorted = beforeSorting.sort((a, b) => a - b)
+        let afterSorting = await sort(sortingAlgo, sortingSpeed, barsInfo, setBarsInfo)
+        console.log(afterSorting)
+        console.log(actualSorted);
+
+        if (sortTestResultRef.current) {
+            sortTestResultRef.current.innerText = `${(JSON.stringify(afterSorting) === JSON.stringify(actualSorted))}`
+        }
     }
 
     const algoChangeHandler = (e: any) => {
@@ -95,6 +104,7 @@ function Visualizer() {
                     onChange={speedChangeHandler}
                 />
             </div>
+            <div className="sort-test-result" ref={sortTestResultRef}></div>
             <SortingAlgoOptions sortingAlgo={sortingAlgo} algoChangeHandler={algoChangeHandler} />
         </div>
     )
