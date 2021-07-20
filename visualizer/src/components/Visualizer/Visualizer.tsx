@@ -17,7 +17,7 @@ function Visualizer() {
 
     const styledClasses = useStyles()
 
-    // console.log("Rendering Visualizer ", array);
+    // console.log("Rendering Visualizer ");
     // console.log(initialColors)
 
     useEffect(() => {
@@ -39,6 +39,7 @@ function Visualizer() {
         // })
 
         setBarsInfo(prevBarsInfo => {
+            console.log("Visualizer: setting barsInfo")
             return {
                 array: [...generateArray(newLength)],
                 colors: [...generateBarColors(newLength)]

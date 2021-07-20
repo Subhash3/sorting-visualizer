@@ -7,7 +7,7 @@
 	- [x] Convert the colors into a context to aviod updating it in every render <Visualizer/> Component.
 - [x] Merge array and colors and provider them together are barsInfo
 - [x] Selection Sort
-- [ ] Insertion Sort
+- [x] Insertion Sort
 - [ ] Merge Sort
 - [ ] Quick Sort
 - [ ] Heap Sort

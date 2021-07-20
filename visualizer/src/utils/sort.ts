@@ -15,6 +15,7 @@ export const swap = (i: number, j: number, array: number[]) => {
 }
 
 export const highlightBars = (colors: string[], indices: number[], color: string) => {
+    // console.log(colors)
     let highlighted: string[] = []
     for (let k = 0; k < colors.length; k++) {
         if (indices.includes(k)) {

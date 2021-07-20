@@ -1,6 +1,7 @@
 // import { useEffect } from 'react'
 // import { useEffect } from 'react'
 // import { useArray } from '../../contexts/arrayProvider'
+import { useEffect } from 'react'
 import { useBarsInfo } from '../../contexts/barsInfoProvider'
 import { resetArray, resetBarColors } from '../../utils/helpers'
 
@@ -12,7 +13,7 @@ interface MenuBarProps {
 
 export default function MenuBar({ sortHandler }: MenuBarProps) {
     // const { setArray } = useArray()
-    const { setBarsInfo } = useBarsInfo()
+    const { barsInfo, setBarsInfo } = useBarsInfo()
 
     // useEffect(() => {
     //     console.log("MenuBar: array updated")
@@ -22,7 +23,11 @@ export default function MenuBar({ sortHandler }: MenuBarProps) {
     //     console.log("Menubar: SortHandler updated")
     // }, [sortHandler])
 
-    console.log("Rendering Menubar")
+    useEffect(() => {
+        // console.log("MenuBar: BarsInfo changed!!")
+    }, [barsInfo])
+
+    // console.log("Rendering Menubar")
     // console.log(array);
 
     const generateNewArray = () => {
@@ -33,6 +38,7 @@ export default function MenuBar({ sortHandler }: MenuBarProps) {
         // })
 
         setBarsInfo(prevBarsInfo => {
+            console.log("MenuBar: Setting barsInfo")
             return {
                 array: resetArray(prevBarsInfo.array),
                 colors: resetBarColors(prevBarsInfo.colors)
