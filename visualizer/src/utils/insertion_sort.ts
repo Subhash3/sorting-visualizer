@@ -1,3 +1,4 @@
+import { resetBarColors } from './helpers';
 import { animate, highlightBars } from './sort';
 import { IFC_BarsInfo } from "../components/BarsContainer/BarsContainer"
 
@@ -18,9 +19,12 @@ export const insertionSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.D
         // => move the element left so that all the elements on right are bigger than this.
         // This loop finds the index of such element
         for (j = i - 1; j >= 0; j--) {
+            // Turn all these bars red
             if (array[j] <= current) {
                 break
             }
+            highlighted = highlightBars(highlighted, [j], "red")
+            // await animate(array, highlighted, setBarsInfo, delay)
         }
         // We actually move a step leftward because of forloop
         // Increment it once to bring it to the correct position
@@ -41,13 +45,15 @@ export const insertionSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.D
 
             // Bring the current element to this correct position
             array[i] = current;
+            highlighted = highlightBars(highlighted, [iBackup], "red")
         }
         i = iBackup
 
-        highlighted = highlightBars(barsInfo.colors, [j], "green")
+        highlighted = highlightBars(highlighted, [j], "green")
         await animate(array, highlighted, setBarsInfo, delay)
-
     }
+    let afterReset = resetBarColors(barsInfo.colors)
+    await animate(array, afterReset, setBarsInfo, delay)
 
     return array
 }
