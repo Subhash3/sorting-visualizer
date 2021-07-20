@@ -37,4 +37,5 @@ export const bubbleSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Disp
         await animate(array, highlighted, setBarsInfo, delay)
     }
     // console.log("After sort: ", array);
+    return array
 }
