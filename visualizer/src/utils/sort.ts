@@ -47,7 +47,6 @@ export const sort = async (algoName: string, speed: number, barsInfo: IFC_BarsIn
             return selectionSort(barsInfo, setBarsInfo, speed)
         case sortingAlgos.INSERTION_SORT:
             return insertionSort(barsInfo, setBarsInfo, speed)
-            break
         case sortingAlgos.MERGE_SORT:
             // console.log(`${algoName} hasn't been implemented yet`)
             return megeSort(barsInfo, setBarsInfo, speed)
