@@ -9,7 +9,7 @@
 - [x] Selection Sort
 - [x] Insertion Sort
 - [x] Merge Sort
-- [ ] Quick Sort
+- [x] Quick Sort
 - [ ] Heap Sort
 - [x] Add a slider to change the speed of the sorting process.
 - [ ] Add a stop button to stop the sorting process.
