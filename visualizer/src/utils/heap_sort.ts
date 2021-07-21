@@ -109,7 +109,7 @@ export const heapSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispat
 
     let { array } = barsInfo
     await heapSortUtil(array)
-    console.log(array)
+    // console.log(array)
 
     await animate(array, barsInfo.colors, setBarsInfo, delay)
 
