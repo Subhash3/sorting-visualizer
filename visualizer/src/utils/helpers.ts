@@ -7,7 +7,8 @@ export const sortingAlgos = {
     INSERTION_SORT: "insertion-sort",
     SELECTION_SORT: "selection-sort",
     MERGE_SORT: "merge-sort",
-    QUICK_SORT: "quick-sort"
+    QUICK_SORT: "quick-sort",
+    HEAP_SORT: "heap-sort"
 }
 
 export const resetArray = (array: number[]) => {

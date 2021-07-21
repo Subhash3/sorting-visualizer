@@ -31,10 +31,14 @@ export default function SortingAlgoOptions({ sortingAlgo, algoChangeHandler }: I
                 data-value={sortingAlgos.MERGE_SORT}
                 onClick={algoChangeHandler}
             >Merge Sort</div>
-            <div className={`sort-algo merge ${sortingAlgo === sortingAlgos.QUICK_SORT ? "active" : ""}`}
+            <div className={`sort-algo quick ${sortingAlgo === sortingAlgos.QUICK_SORT ? "active" : ""}`}
                 data-value={sortingAlgos.QUICK_SORT}
                 onClick={algoChangeHandler}
             >Quick Sort</div>
+            <div className={`sort-algo heap not-implemented ${sortingAlgo === sortingAlgos.HEAP_SORT ? "active" : ""}`}
+                data-value={sortingAlgos.HEAP_SORT}
+                onClick={algoChangeHandler}
+            >Heap Sort</div>
         </div>
     )
 }
