@@ -13,4 +13,4 @@
 - [ ] Heap Sort
 - [x] Add a slider to change the speed of the sorting process.
 - [ ] Add a stop button to stop the sorting process.
-- [ ] Disable all the pointer events (Except on the stop button) when the sorting is happening.
+- [x] Disable all the pointer events (Except on the stop button) when the sorting is happening.
