@@ -1,3 +1,4 @@
+import { heapSort } from './heap_sort';
 import { megeSort } from './merge_sort';
 import { insertionSort } from './insertion_sort';
 import { selectionSort } from './selection_sort';
@@ -62,6 +63,8 @@ export const sort = async (algoName: string, speed: number, barsInfo: IFC_BarsIn
         case sortingAlgos.QUICK_SORT:
             // console.log(`${algoName} hasn't been implemented yet`)
             return quickSort(barsInfo, setBarsInfo, speed)
+        case sortingAlgos.HEAP_SORT:
+            return heapSort(barsInfo, setBarsInfo, speed)
         default:
             return bubbleSort(barsInfo, setBarsInfo, speed)
     }
