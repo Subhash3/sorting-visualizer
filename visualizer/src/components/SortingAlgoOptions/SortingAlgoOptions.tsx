@@ -35,7 +35,7 @@ export default function SortingAlgoOptions({ sortingAlgo, algoChangeHandler }: I
                 data-value={sortingAlgos.QUICK_SORT}
                 onClick={algoChangeHandler}
             >Quick Sort</div>
-            <div className={`sort-algo heap not-implemented ${sortingAlgo === sortingAlgos.HEAP_SORT ? "active" : ""}`}
+            <div className={`sort-algo heap ${sortingAlgo === sortingAlgos.HEAP_SORT ? "active" : ""}`}
                 data-value={sortingAlgos.HEAP_SORT}
                 onClick={algoChangeHandler}
             >Heap Sort</div>
