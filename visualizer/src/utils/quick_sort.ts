@@ -35,12 +35,18 @@ export const quickSort = async (barsInfo: IFC_BarsInfo, setBarsInfo: React.Dispa
             await animate(arr, pointersHighlighted, setBarsInfo, delay)
 
             if (arr[j] < pivot) {
-                pointersHighlighted = highlightBars(pointersHighlighted, [i], "red")
-                await animate(arr, pointersHighlighted, setBarsInfo, delay)
+                // If i == j then i is already in its correct position... Don't need to turn it red or swap
+                if (i !== j) {
 
-                inPlaceSwap(i, j, arr)
+                    pointersHighlighted = highlightBars(pointersHighlighted, [i], "red")
+                    pointersHighlighted = highlightBars(pointersHighlighted, [j], "lightgreen")
+                    await animate(arr, pointersHighlighted, setBarsInfo, delay)
+
+                    inPlaceSwap(i, j, arr)
+                }
 
                 pointersHighlighted = highlightBars(pointersHighlighted, [i], "lightgreen")
+                pointersHighlighted = highlightBars(pointersHighlighted, [j], "magenta")
                 await animate(arr, pointersHighlighted, setBarsInfo, delay)
 
                 i += 1
