@@ -9,11 +9,13 @@ import { generateArray, generateBarColors, sortingAlgos } from '../../utils/help
 import { sort } from '../../utils/sort'
 import SortingAlgoOptions from '../SortingAlgoOptions/SortingAlgoOptions'
 import { useBarsInfo } from '../../contexts/barsInfoProvider'
+import { useSortingStatus } from '../../contexts/sortingStatusProvier'
 
 function Visualizer() {
     const [sortingAlgo, setSortingAlgo] = useState(sortingAlgos.BUBBLE_SORT)
     const [sortingSpeed, setSortingSpeed] = useState<number>(1)
     const { barsInfo, setBarsInfo } = useBarsInfo()
+    const { setSortingStatus } = useSortingStatus()
     const sortTestResultRef = useRef<HTMLDivElement>(null)
 
     const styledClasses = useStyles()
@@ -61,7 +63,9 @@ function Visualizer() {
     }
 
     const sortHandler = async () => {
-        sort(sortingAlgo, sortingSpeed, barsInfo, setBarsInfo)
+        setSortingStatus(true)
+        await sort(sortingAlgo, sortingSpeed, barsInfo, setBarsInfo)
+        setSortingStatus(false)
 
         // Use the following code instead to see the test result of sorting
 
