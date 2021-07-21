@@ -12,11 +12,13 @@ interface IFC_BarProps {
 }
 
 export default function Bar({ val, width, spacing, index, showNumber, color }: IFC_BarProps) {
+    let bgColor = color !== "" ? color : "#83DDBF"
 
     const barStyles = {
         height: 4 * val,
         width: width,
-        left: width * index + spacing * index
+        left: width * index + spacing * index,
+        backgroundColor: bgColor
     }
 
     // console.log("Width: ", width);
