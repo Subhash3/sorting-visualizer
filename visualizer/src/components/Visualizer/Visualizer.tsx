@@ -63,23 +63,19 @@ function Visualizer() {
     }
 
     const sortHandler = async () => {
+        // let beforeSorting = [...barsInfo.array]
+        // let actualSorted = beforeSorting.sort((a, b) => a - b)
+
         setSortingStatus(true)
-        await sort(sortingAlgo, sortingSpeed, barsInfo, setBarsInfo)
+        let afterSorting = await sort(sortingAlgo, sortingSpeed, barsInfo, setBarsInfo)
         setSortingStatus(false)
 
-        // Use the following code instead to see the test result of sorting
+        // console.log(afterSorting)
+        // console.log(actualSorted);
 
-        /*
-        let beforeSorting = [...barsInfo.array]
-        let actualSorted = beforeSorting.sort((a, b) => a - b)
-        let afterSorting = sort(sortingAlgo, sortingSpeed, barsInfo, setBarsInfo)
-        console.log(afterSorting)
-        console.log(actualSorted);
-
-        if (sortTestResultRef.current) {
-            sortTestResultRef.current.innerText = `${(JSON.stringify(afterSorting) === JSON.stringify(actualSorted))}`
-        }
-        */
+        // if (sortTestResultRef.current) {
+        //     sortTestResultRef.current.innerText = `${(JSON.stringify(afterSorting) === JSON.stringify(actualSorted))}`
+        // }
     }
 
     const algoChangeHandler = (e: any) => {
