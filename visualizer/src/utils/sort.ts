@@ -5,6 +5,7 @@ import { IFC_BarsInfo } from './../components/BarsContainer/BarsContainer';
 import { bubbleSort } from './bubble_sort';
 import { sleep } from './helpers';
 import { scale, sortingAlgos } from './helpers';
+import { quickSort } from './quick_sort';
 
 export const swap = (i: number, j: number, array: number[]) => {
     // console.log(`swapping ${i} and ${j}`);
@@ -13,6 +14,14 @@ export const swap = (i: number, j: number, array: number[]) => {
     array[j] = temp
 
     return [...array]
+}
+
+export const inPlaceSwap = (i: number, j: number, array: number[]) => {
+    let temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+
+    return
 }
 
 export const highlightBars = (colors: string[], indices: number[], color: string) => {
@@ -51,8 +60,8 @@ export const sort = async (algoName: string, speed: number, barsInfo: IFC_BarsIn
             // console.log(`${algoName} hasn't been implemented yet`)
             return megeSort(barsInfo, setBarsInfo, speed)
         case sortingAlgos.QUICK_SORT:
-            console.log(`${algoName} hasn't been implemented yet`)
-            break
+            // console.log(`${algoName} hasn't been implemented yet`)
+            return quickSort(barsInfo, setBarsInfo, speed)
         default:
             return bubbleSort(barsInfo, setBarsInfo, speed)
     }
